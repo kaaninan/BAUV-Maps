@@ -172,7 +172,7 @@ First, convert to GTiff format so QGIS can read it. Then, convert to MBTiles for
 gdal_translate -of GTiff -expand rgba MAP.KAP out.tif
 ```
 
-Then, use QGIS to convert the BSB format to MBTiles format.
+Then, use QGIS ```Generate XYZ tiles (MBTiles)``` tool to convert the KAP format to MBTiles format. Set maximum zoom level to 15 and DPI to 600.
 
 TODO: add screenshot
 
