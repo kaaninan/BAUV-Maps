@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:16-bullseye AS builder
+FROM node:16-bullseye
 
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get -qq update \
@@ -26,31 +26,26 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN git clone --depth 1 https://github.com/acalcutt/tileserver-gl.git /usr/src/app
-COPY . /usr/src/app
-ENV NODE_ENV="production"
-RUN cd /usr/src/app && npm install --production
-
 RUN curl http://archive.ubuntu.com/ubuntu/pool/main/libj/libjpeg-turbo/libjpeg-turbo8_2.0.3-0ubuntu1_amd64.deb --output libjpeg-turbo8_2.0.3-0ubuntu1_amd64.deb
-RUN apt install ./libjpeg-turbo8_2.0.3-0ubuntu1_amd64.deb
 RUN curl http://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu66_66.1-2ubuntu2_amd64.deb --output libicu66_66.1-2ubuntu2_amd64.deb
+RUN apt install ./libjpeg-turbo8_2.0.3-0ubuntu1_amd64.deb
 RUN apt install ./libicu66_66.1-2ubuntu2_amd64.deb
+RUN npm install -g pm2
 
-ENV CHOKIDAR_USEPOLLING=1
-ENV CHOKIDAR_INTERVAL=500
+# ENV CHOKIDAR_USEPOLLING=1
+# ENV CHOKIDAR_INTERVAL=500
 
-# TODO: Import mbtiles and fonts and config file
+# RUN git clone --depth 1 https://github.com/acalcutt/tileserver-gl.git /usr/src/app
+COPY . /usr/src/server
 
-# VOLUME /data
-# WORKDIR /data
+# Install app dependencies
+RUN cd /usr/src/server && npm ci
+RUN cd /usr/src/server/lib/tileserver-gl && npm ci
 
-# # allow node to listen on low ports
-# RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/node
+# Expose ports
+EXPOSE 8000
+EXPOSE 8001
 
-# EXPOSE 80
-
-# USER node:node
-
-ENTRYPOINT ["/usr/src/app/docker-entrypoint.sh"]
-
-CMD ["-p", "80"]
+# WORKDIR /usr/src/server/src/tileserver
+ENTRYPOINT ["/usr/src/server/docker-entrypoint.sh"]
+CMD ["-p", "8000"]

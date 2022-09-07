@@ -1,0 +1,48 @@
+<svg width="800" height="600">
+<g fill="none"
+   transform="matrix(1,0,0,-1,400,400)"
+   stroke-width="10"
+   stroke-linejoin="round"
+   stroke-linecap="round">
+
+<!--              -->
+<!-- SIGNATUR L10 -->
+<!-- ============ -->
+
+<!-- WINDMÜHLE        -->
+
+<g id="windmuehle">
+
+<!-- Wegen Ueberhoehe 1/2 mm nach unten versetzt -->
+
+<circle cx="0" cy="-50" r="125"
+  stroke-width="20" stroke="black" fill="black"  />
+
+<line x1="0" y1="-50" x2="0" y2="280"
+  stroke-width="20" stroke="black"/>
+
+<line x1="-100" y1="180" x2="100" y2="380"
+  stroke-width="20" stroke="black"/>
+<line x1="-90" y1="170" x2="-40" y2="220"
+  stroke-width="20" stroke="black"/>
+<line x1="40" y1="340" x2="90" y2="390"
+  stroke-width="20" stroke="black"/>
+
+<line x1="-100" y1="380" x2="100" y2="180"
+  stroke-width="20" stroke="black"/>
+<line x1="-110" y1="370" x2="-60" y2="320"
+  stroke-width="20" stroke="black"/>
+<line x1="60" y1="240" x2="110" y2="190"
+  stroke-width="20" stroke="black"/>
+
+</g>
+
+<!-- ENDE WINDMÜHLE -->
+
+</g>
+
+</svg>
+
+
+
+

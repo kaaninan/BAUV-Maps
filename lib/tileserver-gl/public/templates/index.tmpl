@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maplibre TileServer GL - Server for vector and raster maps with GL styles</title>
+  <link rel="stylesheet" type="text/css" href="{{public_url}}index.css{{&key_query}}" />
+  <script>
+    function toggle_xyz(id) {
+      var el = document.getElementById(id);
+      var s = el.style;
+      s.display = s.display == 'none' ? 'inline-block' : 'none';
+      el.setSelectionRange(0, el.value.length);
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <section>
+    <h1 class="title {{#if is_light}}light{{/if}}"><img src="{{public_url}}images/logo.png" alt="TileServer GL" /></h1>
+    <h2 class="subtitle">Vector {{#if is_light}}<s>and raster</s>{{else}}and raster{{/if}} maps with GL styles</h2>
+    {{#if styles}}
+      <h2 class="box-header">Styles</h2>
+      <div class="box">
+      {{#each styles}}
+        <div class="item">
+          {{#if thumbnail}}
+            <img src="{{public_url}}styles/{{@key}}/{{thumbnail}}{{&../key_query}}" alt="{{name}} preview" />
+          {{else}}
+            <img src="{{public_url}}images/placeholder.png" alt="{{name}} preview" />
+          {{/if}}
+          <div class="details">
+            <h3>{{name}}</h3>
+            <p class="identifier">identifier: {{@key}}</p>
+            <p class="services">
+              services:
+              {{#if serving_data}}
+                <a href="{{public_url}}styles/{{@key}}/style.json{{&../key_query}}">GL Style</a>
+              {{/if}}
+              {{#if serving_rendered}}
+                {{#if serving_data}}| {{/if}}<a href="{{public_url}}styles/{{@key}}.json{{&../key_query}}">TileJSON</a>
+              {{/if}}
+              {{#if serving_rendered}}
+                | <a href="{{public_url}}styles/{{@key}}/wmts.xml{{&../key_query}}">WMTS</a>
+              {{/if}}
+              {{#if xyz_link}}
+                | <a href="#" onclick="return toggle_xyz('xyz_style_{{@key}}');">XYZ</a>
+                  <input id="xyz_style_{{@key}}" type="text" value="{{&xyz_link}}" style="display:none;" />
+              {{/if}}
+            </p>
+          </div>
+          <div class="viewers">
+            {{#if serving_data}}
+              {{#if serving_rendered}}
+                <a class="btn" href="{{public_url}}styles/{{@key}}/{{&../key_query}}{{viewer_hash}}">Viewer</a>
+              {{/if}}
+            {{/if}}
+            {{#if serving_rendered}}
+              <a class="btn" href="{{public_url}}styles/{{@key}}/?{{&../key_query_part}}raster{{viewer_hash}}">Raster</a>
+            {{/if}}
+            {{#if serving_data}}
+              <a class="btn" href="{{public_url}}styles/{{@key}}/?{{&../key_query_part}}vector{{viewer_hash}}">Vector</a>
+            {{/if}}
+          </div>
+        </div>
+      {{/each}}
+      </div>
+    {{/if}}
+    {{#if data}}
+      <h2 class="box-header">Data</h2>
+      <div class="box">
+      {{#each data}}
+        <div class="item">
+          {{#if thumbnail}}
+            <img src="{{public_url}}data/{{@key}}/{{thumbnail}}{{&../key_query}}" alt="{{name}} preview" />
+          {{else}}
+            <img src="{{public_url}}images/placeholder.png" alt="{{name}} preview" />
+          {{/if}}
+          <div class="details">
+            <h3>{{name}}</h3>
+            <p class="identifier">identifier: {{@key}}{{#if formatted_filesize}} | size: {{formatted_filesize}}{{/if}} | type: {{#is_vector}}vector{{/is_vector}}{{^is_vector}}raster{{/is_vector}} data</p>
+            <p class="services">
+              services: <a href="{{public_url}}data/{{@key}}.json{{&../key_query}}">TileJSON</a>
+              {{#if wmts_link}}
+                | <a href="{{&wmts_link}}">WMTS</a>
+              {{/if}}
+              {{#if xyz_link}}
+                | <a href="#" onclick="return toggle_xyz('xyz_data_{{@key}}');">XYZ</a>
+                  <input id="xyz_data_{{@key}}" type="text" value="{{&xyz_link}}" style="display:none;" />
+              {{/if}}
+            </p>
+          </div>
+          <div class="viewers">
+            {{#is_vector}}
+            <a class="btn" href="{{public_url}}data/{{@key}}/{{&../key_query}}{{viewer_hash}}">Inspect</a>
+            {{/is_vector}}
+            {{^is_vector}}
+            <a class="btn" href="{{public_url}}data/{{@key}}/{{&../key_query}}{{viewer_hash}}">View</a>
+            {{/is_vector}}
+          </div>
+        </div>
+      {{/each}}
+      </div>
+    {{/if}}
+  </section>
+  <footer>
+    <p>
+      <a href="https://github.com/acalcutt/tileserver-gl" target="_blank">Powered by Maplibre TileServer GL ({{server_version}})</a>
+    </p>
+  </footer>
+</body>
+</html>

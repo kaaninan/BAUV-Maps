@@ -1,0 +1,33 @@
+<svg width="800" height="600">
+<g fill="none"
+   transform="matrix(1,0,0,-1,400,400)"
+   stroke-width="10"
+   stroke-linejoin="round"
+   stroke-linecap="round">
+
+<!--              -->
+<!-- SIGNATUR L10 -->
+<!-- ============ -->
+
+<!-- KREUZ        -->
+
+<g id="kreuz">
+
+<path
+  d="
+    M 100,0
+    L 0,0
+    L 0,265
+    M -75,175
+    L 75,175
+  "
+  stroke-width="20"
+  stroke="black"
+  />
+</g>
+
+<!-- ENDE KREUZ -->
+
+</g>
+
+</svg>

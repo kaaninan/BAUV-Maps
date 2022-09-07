@@ -1,0 +1,61 @@
+<svg width="800" height="600">
+<g fill="none"
+   transform="matrix(1,0,0,-1,400,400)"
+   stroke-width="10"
+   stroke-linejoin="round"
+   stroke-linecap="round">
+
+<!--              -->
+<!-- SIGNATUR L10 -->
+<!-- ============ -->
+
+<!-- MEILENSULE -->
+
+<g id="meilensaeule">
+
+<!-- Fuellung -->
+
+<path d=
+  "
+    M -50,0
+    L -30,350
+    L 15,370
+    L 37.5,350
+    L 50,0
+    L -50,0
+  "
+  stroke-width="1"
+  stroke="black"
+  fill="#fcfcfc" zx="0" zy="50"></path>
+
+<!-- Umriss -->
+
+<path d=
+  "
+    M -120,0
+    L 150,-0
+    L -50,0
+    L -30,350
+    L 15,370
+    L 37.5,350
+    L 50,0
+
+    M 15,370
+    L 45,350
+    L 65,0
+
+    M 15,370
+    L 52.5,350
+    L 80,0
+  "
+  stroke-width="20"
+  stroke="black"
+/>
+
+</g>
+
+<!-- ENDE MEILENSÄULE -->
+
+</g>
+
+</svg>

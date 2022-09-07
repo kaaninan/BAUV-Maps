@@ -1,0 +1,71 @@
+<svg width="1600" height="1200">
+<g fill="none"
+   transform="matrix(1,0,0,-1,800,800)"
+   stroke-width="10"
+   stroke-linejoin="round"
+   stroke-linecap="round">
+
+<!--              -->
+<!-- SIGNATUR L10 -->
+<!-- ============ -->
+
+<!-- WINDRAD 70 GRAD -->
+
+<g id="windrad-70-grad">
+
+<circle cx="0" cy="0" r="87.5"
+  stroke-width="20" stroke="black" fill="black"  />
+
+<line x1="0" y1="0" x2="0" y2="250"
+  stroke-width="20" stroke="black"/>
+
+<line x1="5" y1="245"  x2="103" y2="532"
+  stroke-width="10" stroke="black"/>
+<line x1="5" y1="255"  x2="103" y2="532" 
+  stroke-width="10" stroke="black"/>
+<line x1="-5" y1="245" x2="103" y2="532" 
+  stroke-width="10" stroke="black"/>
+<line x1="-5" y1="255" x2="103" y2="532"
+  stroke-width="10" stroke="black"/>
+
+<line x1="5" y1="245"  x2="-295" y2="198"
+  stroke-width="10" stroke="black"/>
+<line x1="5" y1="255"  x2="-295" y2="198" 
+  stroke-width="10" stroke="black"/>
+<line x1="-5" y1="245" x2="-295" y2="198" 
+  stroke-width="10" stroke="black"/>
+<line x1="-5" y1="255" x2="-295" y2="198"
+  stroke-width="10" stroke="black"/>
+
+<line x1="5" y1="245"  x2="193" y2="20"
+  stroke-width="10" stroke="black"/>
+<line x1="5" y1="255"  x2="193" y2="20" 
+  stroke-width="10" stroke="black"/>
+<line x1="-5" y1="245" x2="193" y2="20" 
+  stroke-width="10" stroke="black"/>
+<line x1="-5" y1="255" x2="193" y2="20"
+  stroke-width="10" stroke="black"/>
+
+
+
+</g>
+
+<!-- ENDE WINDRAD -->
+
+</g>
+
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

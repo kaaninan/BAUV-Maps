@@ -1,0 +1,41 @@
+<svg width="800" height="600">
+<g fill="none"
+   transform="matrix(1,0,0,-1,400,400)"
+   stroke-width="10"
+   stroke-linejoin="round"
+   stroke-linecap="round">
+
+<!--              -->
+<!-- SIGNATUR L10 -->
+<!-- ============ -->
+
+<!-- SCHLOSS        -->
+
+<g id="schloss">
+
+<circle cx="0" cy="0" r="125"
+  stroke-width="20" stroke="black" fill="black"  />
+
+<line x1="0" y1="0" x2="0" y2="375"
+  stroke-width="20" stroke="black"/>
+
+<path d="
+    M 0,375
+    Q 40,325 170,300
+    Q 40,275 0,225
+  "
+  stroke-width="20"
+  stroke="black"
+  fill="black"
+  zx="40" zy="300" />
+
+
+
+</g>
+
+<!-- ENDE SCHLOSS -->
+
+</g>
+
+</svg>
+

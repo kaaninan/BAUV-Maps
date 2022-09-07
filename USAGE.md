@@ -8,13 +8,15 @@ Step 1: Create mbtiles maps and put them in the same directory with the Dockerfi
 Step 2: Build the docker image with the following command:
 
 ```bash
-docker build -t map .
+docker build -t mapserver .
 ```
+
+*Note: Add ```--platform linux/amd64``` option if using Apple M1.*
 
 Step 3: Run the docker image with the following command:
 
 ```bash
-docker run -p 8080:8080 map
+docker run --rm -d -p 8000:8000 -p 8001:8001 mapserver
 ```
 
 Step 4: Open the following link in your browser: http://localhost:8080

@@ -1,0 +1,40 @@
+{
+	"options": {
+		"paths": {
+			"root": "",
+			"fonts": "fonts",
+			"sprites": "sprites",
+			"styles": "styles",
+			"mbtiles": "tilesets"
+		},
+		"domains": [
+			"localhost:8000",
+			"127.0.0.1:8000"
+		],
+		"formatQuality": {
+			"jpeg": 80,
+			"webp": 90
+		},
+		"maxScaleFactor": 3,
+		"maxSize": 2048,
+		"pbfAlias": "pbf",
+		"serveAllFonts": true,
+		"serveAllStyles": true,
+		"serveStaticMaps": true,
+		"tileMargin": 0
+	},
+	"styles": {
+		"basic": {
+			"style": "basic.json",
+			"tilejson": {
+				"type": "overlay",
+				"bounds": [8.44806, 47.32023, 8.62537, 47.43468]
+			}
+		}
+	},
+	"data": {
+		"turkey-vector": {
+			"mbtiles": "turkey.mbtiles"
+		}
+	}
+}
