@@ -2,16 +2,18 @@
 
 ## Run Server with Docker
 
-Use Dockerfile for creating a docker image for tileserver-gl and express. 
+**Step 1:** Install Docker
 
-**Step 1:** Get GitHub repository
+Install Docker Engine from [here](https://www.docker.com).
+
+**Step 2:** Get GitHub repository
 
 ```bash
 git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
 cd BAUV-Maps
 ```
 
-**Step 2:** Build the docker image with the following command:
+**Step 3:** Build the docker image with the following command:
 
 ```bash
 docker build -t mapserver .****
@@ -19,13 +21,13 @@ docker build -t mapserver .****
 
 *Note: Add ```--platform linux/amd64``` option if using Apple M1.*
 
-**Step 3:** Run the docker image with the following command:
+**Step 4:** Run the docker image with the following command:
 
 ```bash
 docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver
 ```
 
-**Step 4:** Open the following link in your browser: http://localhost:8000
+To see the map previews, go to [http://localhost:8000](http://localhost:8000), change localhost to your server IP address if you are running the server on a remote server.
 
 To see docker logs, run the following command:
 
@@ -39,6 +41,12 @@ docker logs -f containerID
 | turkey-osm.mbtiles | OpenStreetMap data for Turkey | Vector | yes   |
 | TR402921.mbtiles   | Istanbul Bosphorus            | Vector | no    |
 | G1111_1.mbtiles    | Istanbul Bosphorus            | Raster | no    |
+
+### Ports
+| Port | Description                               | Tool          |
+| :--- | :---------------------------------------- | :------------ |
+| 8000 | Tile server for mbtiles, styles and fonts | tileserver-gl |
+| 8001 | SVG files for Nautical Maps               | express       |
 
 ### Edit Maps and styles
 
@@ -69,9 +77,9 @@ After adding the map, you should rebuild the docker image and run it again.
 
 If you want to use a different IP address or domain, you can change the IP address in the following files:
 
-> src/tileserver/styles/*.json
-> src/tileserver/config.json
-> src/index.js
+- ```src/tileserver/styles/*.json```
+- ```src/tileserver/config.json```
+- ```src/index.js```
 
 
 ----
