@@ -3,7 +3,7 @@
 		"paths": {
 			"root": "",
 			"fonts": "fonts",
-			"sprites": "sprites",
+			"sprites": "",
 			"styles": "styles",
 			"mbtiles": "tilesets"
 		},

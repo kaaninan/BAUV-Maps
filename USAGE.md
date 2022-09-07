@@ -16,7 +16,7 @@ cd BAUV-Maps
 **Step 3:** Build the docker image with the following command:
 
 ```bash
-docker build -t mapserver .****
+docker build -t mapserver .
 ```
 
 *Note: Add ```--platform linux/amd64``` option if using Apple M1.*
@@ -33,6 +33,29 @@ To see docker logs, run the following command:
 
 ```bash
 docker logs -f containerID
+```
+
+### Run Server with DigitalOcean Droplet
+
+Create **Ubuntu 20.04** droplet, connect to the server with SSH and run the following commands:
+
+```bash
+# Install Docker
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt install docker-ce
+
+# Enable Port Forwarding
+sudo ufw allow 8000/tcp
+sudo ufw allow 8001/tcp
+
+# Install App
+git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
+cd BAUV-Maps
+docker build -t mapserver .
+docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver
 ```
 
 ### Included Maps
