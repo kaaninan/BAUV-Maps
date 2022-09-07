@@ -25,7 +25,7 @@ docker build -t mapserver .
 **Step 4:** Run the docker image with the following command:
 
 ```bash
-docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver
+docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver --public_url http://SERVERIPADDRESS:8000
 ```
 
 To see the map previews, go to [http://localhost:8000](http://localhost:8000), change localhost to your server IP address if you are running the server on a remote server.

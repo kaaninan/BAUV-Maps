@@ -48,5 +48,5 @@ EXPOSE 8000
 EXPOSE 8001
 
 WORKDIR /usr/src/server
-ENTRYPOINT ["/usr/src/server/docker-entrypoint.sh"]
-CMD ["-p", "8000", "-c", "/usr/src/server/src/tileserver/config.json"]
+ENTRYPOINT ["/usr/src/server/docker-entrypoint.sh", "-p", "8000", "-c", "/usr/src/server/src/tileserver/config.json"]
+# CMD ["--public_url", "http://IP_ADDRESS:8000"]
