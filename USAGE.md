@@ -1,12 +1,13 @@
 # Usage
 
-## Build with Docker
+## Build
 
-**Step 1:** Install Docker
+**Prerequisites:**
+- Install Docker Engine from [here](https://www.docker.com).
 
-Install Docker Engine from [here](https://www.docker.com).
+### Build from Scratch (Option 1)
 
-**Step 2:** Get GitHub repository
+**Step 1:** Get GitHub repository
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git # Skip LFS files
@@ -14,7 +15,7 @@ cd BAUV-Maps
 git lfs pull # Download maps
 ```
 
-**Step 3:** Build the docker image with the following command:
+**Step 2:** Build the docker image with the following command:
 
 ```bash
 docker build -t mapserver .
@@ -22,7 +23,23 @@ docker build -t mapserver .
 
 *Note: Add ```--platform linux/amd64``` option if using Apple M1.*
 
-**Step 4:** Run the docker image with the following command:
+### Use Prebuilt Docker Image (Option 2)
+
+See: [Releases](https://github.com/kaaninan/BAUV-Maps/releases)
+
+This release includes prebuild docker image. It could be used without building the docker image.
+
+**Step 1:** Download the release and extract it.
+
+**Step 2:** Import the docker image with the following command:
+
+```bash
+docker import /path/to/exampleimage.tgz
+```
+
+### Run Docker Container
+
+Run the docker image with the following command:
 
 ```**bash**
 docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver --public_url http://SERVERIPADDRESS:8000
@@ -38,7 +55,7 @@ To see docker logs, run the following command:
 docker logs -f containerID
 ```
 
-### Build Server and run with DigitalOcean Droplet
+### Run with DigitalOcean Droplet
 
 Create **Ubuntu 20.04** droplet, connect to the server with SSH and run the following commands:
 
@@ -55,7 +72,10 @@ sudo ufw allow 8000/tcp
 sudo ufw allow 8001/tcp
 ```
 
-Then, follow the steps in the **Build with Docker** section and pass Step 1.
+Then, follow the steps in the **Build** section.
+
+----
+## Details
 
 ### Included Maps
 | Name               | Description                   | Type   |
@@ -107,9 +127,9 @@ If you want to use a different IP address or domain, you can change the IP addre
 
 
 ----
-## From Scratch
+## Prepare Maps From Scratch
 
-### Prepare Base Map
+### Base Map
 
 - Download OpenStreetMaps data from [here](http://download.geofabrik.de). For example the [Turkey map](http://download.geofabrik.de/europe/turkey-latest.osm.pbf).
 - Use [tilemaker](https://github.com/systemed/tilemaker) for making vector tiles from the map data (osm.pbf). Download tilemaker prebuild binaries from [here](https://github.com/systemed/tilemaker/releases/tag/v2.2.0).
@@ -139,7 +159,6 @@ chmod +x build/tilemaker
 
 [Reference](https://blog.kleunen.nl/blog/tilemaker-generate-map)
 
-----
 ### Prepare Nautical Maps
 
 Prerequisites:
@@ -163,7 +182,6 @@ ogr2ogr is a command line tool to convert simple features data between file form
 ogr2ogr OUT.mbtiles -f "mbtiles" -oo SPLIT_MULTIPOINT=ON -oo ADD_SOUNDG_DEPTH=ON MAP_NAME.000 -skipfailures -dsco MINZOOM=0 -dsco MAXZOOM=16
 ```
 
-----
 ### MBTiles server
 
 #### Overview
