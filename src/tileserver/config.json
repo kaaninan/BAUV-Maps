@@ -23,6 +23,15 @@
 		"serveStaticMaps": true,
 		"tileMargin": 0
 	},
+	"styles": {
+		"basic": {
+			"style": "basic.json",
+			"tilejson": {
+				"type": "overlay",
+				"bounds": [8.44806, 47.32023, 8.62537, 47.43468]
+			}
+		}
+	},
 	"data": {
 		"turkey-osm": {
 			"mbtiles": "turkey-osm.mbtiles"
