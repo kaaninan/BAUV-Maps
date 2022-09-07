@@ -9,8 +9,9 @@ Install Docker Engine from [here](https://www.docker.com).
 **Step 2:** Get GitHub repository
 
 ```bash
-git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git # Skip LFS files
 cd BAUV-Maps
+git lfs pull # Download maps
 ```
 
 **Step 3:** Build the docker image with the following command:
@@ -42,7 +43,7 @@ Create **Ubuntu 20.04** droplet, connect to the server with SSH and run the foll
 ```bash
 # Install Docker
 sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt install apt-transport-https ca-certificates curl software-properties-common git-lfs
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 sudo apt install docker-ce
@@ -52,8 +53,9 @@ sudo ufw allow 8000/tcp
 sudo ufw allow 8001/tcp
 
 # Install App
-git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
 cd BAUV-Maps
+git lfs pull
 docker build -t mapserver .
 docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver
 ```
