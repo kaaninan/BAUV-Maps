@@ -15,7 +15,9 @@ cd BAUV-Maps
 git lfs pull # Download maps
 ```
 
-**Step 2:** Build the docker image with the following command:
+**Step 2:** Copy maps (mbtiles) to ```src/tileserver/tilesets``` folder
+
+**Step 3:** Build the docker image with the following command:
 
 ```bash
 docker build -t mapserver .
