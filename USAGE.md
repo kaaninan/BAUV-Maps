@@ -1,6 +1,6 @@
 # Usage
 
-## Run Server with Docker
+## Build with Docker
 
 **Step 1:** Install Docker
 
@@ -24,9 +24,11 @@ docker build -t mapserver .
 
 **Step 4:** Run the docker image with the following command:
 
-```bash
+```**bash**
 docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver --public_url http://SERVERIPADDRESS:8000
 ```
+
+If you want to run the server on **localhost** ignore the ```--public_url``` option.
 
 To see the map previews, go to [http://localhost:8000](http://localhost:8000), change localhost to your server IP address if you are running the server on a remote server.
 
@@ -36,7 +38,7 @@ To see docker logs, run the following command:
 docker logs -f containerID
 ```
 
-### Run Server with DigitalOcean Droplet
+### Build Server and run with DigitalOcean Droplet
 
 Create **Ubuntu 20.04** droplet, connect to the server with SSH and run the following commands:
 
@@ -51,21 +53,16 @@ sudo apt install docker-ce
 # Enable Port Forwarding
 sudo ufw allow 8000/tcp
 sudo ufw allow 8001/tcp
-
-# Install App
-GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
-cd BAUV-Maps
-git lfs pull
-docker build -t mapserver .
-docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver
 ```
 
+Then, follow the steps in the **Build with Docker** section and pass Step 1.
+
 ### Included Maps
-| Name               | Description                   | Type   | Style |
-| :----------------- | :---------------------------- | :----- | :---- |
-| turkey-osm.mbtiles | OpenStreetMap data for Turkey | Vector | yes   |
-| TR402921.mbtiles   | Istanbul Bosphorus            | Vector | no    |
-| G1111_1.mbtiles    | Istanbul Bosphorus            | Raster | no    |
+| Name               | Description                   | Type   |
+| :----------------- | :---------------------------- | :----- |
+| turkey-osm.mbtiles | OpenStreetMap data for Turkey | Vector |
+| TR402921.mbtiles   | Istanbul Bosphorus            | Vector |
+| G1111_1.mbtiles    | Istanbul Bosphorus            | Raster |
 
 ### Ports
 | Port | Description                               | Tool          |
@@ -76,6 +73,8 @@ docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver
 ### Edit Maps and styles
 
 You can edit the maps and styles in the ```src/tileserver/tilesets``` and ```src/tileserver/styles``` folder.
+
+*Note: With current configuration, styles are used on frontend side. If you want to use styles on backend side, you need to edit the ```src/tileserver/config.json``` file. But IP address of the server should be known before building the docker image.*
 
 ### Adding Nautical Maps
 
