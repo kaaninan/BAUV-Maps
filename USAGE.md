@@ -1,25 +1,77 @@
 # Usage
 
-## Run Server with Docker (WIP)
+## Run Server with Docker
 
 Use Dockerfile for creating a docker image for tileserver-gl and express. 
 
-Step 1: Create mbtiles maps and put them in the same directory with the Dockerfile.
-Step 2: Build the docker image with the following command:
+**Step 1:** Get GitHub repository
 
 ```bash
-docker build -t mapserver .
+git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
+cd BAUV-Maps
+```
+
+**Step 2:** Build the docker image with the following command:
+
+```bash
+docker build -t mapserver .****
 ```
 
 *Note: Add ```--platform linux/amd64``` option if using Apple M1.*
 
-Step 3: Run the docker image with the following command:
+**Step 3:** Run the docker image with the following command:
 
 ```bash
-docker run --rm -d -p 8000:8000 -p 8001:8001 mapserver
+docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver
 ```
 
-Step 4: Open the following link in your browser: http://localhost:8080
+**Step 4:** Open the following link in your browser: http://localhost:8000
+
+To see docker logs, run the following command:
+
+```bash
+docker logs -f containerID
+```
+
+### Included Maps
+| Name               | Description                   | Type   | Style |
+| :----------------- | :---------------------------- | :----- | :---- |
+| turkey-osm.mbtiles | OpenStreetMap data for Turkey | Vector | yes   |
+| TR402921.mbtiles   | Istanbul Bosphorus            | Vector | no    |
+| G1111_1.mbtiles    | Istanbul Bosphorus            | Raster | no    |
+
+### Edit Maps and styles
+
+You can edit the maps and styles in the ```src/tileserver/tilesets``` and ```src/tileserver/styles``` folder.
+
+### Adding Nautical Maps
+
+You can add nautical maps in the ```src/tileserver/tilesets``` folder. The maps should be in the ```.mbtiles``` format.
+
+Then, you should edit the ```src/tileserver/config.json``` file. Add the following line to the ```tilesets``` array:
+
+```json
+"data": {
+    "turkey-osm": {
+        "mbtiles": "turkey-osm.mbtiles"
+    },
+    // Add the following lines
+    "your-map-id": { 
+        "mbtiles": "your-map.mbtiles"
+    }
+    // End of the lines
+}
+```
+
+After adding the map, you should rebuild the docker image and run it again.
+
+### IP Address Declaration
+
+If you want to use a different IP address or domain, you can change the IP address in the following files:
+
+> src/tileserver/styles/*.json
+> src/tileserver/config.json
+> src/index.js
 
 
 ----
@@ -39,9 +91,9 @@ map
 ├── build
 │   └── tilemaker
 ├── resources
-|   ├── config-example.json
-|   ├── config-openmaptiles.json
-|   ├── process-example.lua
+| ├── config-example.json |
+| ├---------------------n |
+| ├── process-example.lua |
 │   └── process-openmaptiles.lua
 └── turkey-latest.osm.pbf
 ```
@@ -49,7 +101,7 @@ map
 - Convert the map data to vector tiles with the following command:
 
 ```bash
-chmod +x build/tilemaker  
+chmod +x build/tilemaker
 ./build/tilemaker --input turkey-latest.osm.pbf --output turkey.mbtiles --process resources/process-openmaptiles.lua --config resources/config-openmaptiles.json
 ```
 

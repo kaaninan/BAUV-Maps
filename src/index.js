@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors')
 const PORT = 8001;
 
-app.use(cors({origin: 'http://localhost:8081'}));
+app.use(cors({origin: 'http://localhost:8001'}));
 
 app.use(express.static('public'));
 // app.use(cors())

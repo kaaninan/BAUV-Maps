@@ -33,8 +33,14 @@
 		}
 	},
 	"data": {
-		"turkey-vector": {
-			"mbtiles": "turkey.mbtiles"
+		"turkey-osm": {
+			"mbtiles": "turkey-osm.mbtiles"
+		},
+		"TR402921": {
+			"mbtiles": "TR402921.mbtiles"
+		},
+		"G1111_1": {
+			"mbtiles": "G1111_1.mbtiles"
 		}
 	}
 }

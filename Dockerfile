@@ -32,10 +32,11 @@ RUN apt install ./libjpeg-turbo8_2.0.3-0ubuntu1_amd64.deb
 RUN apt install ./libicu66_66.1-2ubuntu2_amd64.deb
 RUN npm install -g pm2
 
-# ENV CHOKIDAR_USEPOLLING=1
-# ENV CHOKIDAR_INTERVAL=500
+# for tileserver-gl
+ENV CHOKIDAR_USEPOLLING=1
+ENV CHOKIDAR_INTERVAL=500
 
-# RUN git clone --depth 1 https://github.com/acalcutt/tileserver-gl.git /usr/src/app
+# Copy project files
 COPY . /usr/src/server
 
 # Install app dependencies
@@ -46,6 +47,6 @@ RUN cd /usr/src/server/lib/tileserver-gl && npm ci
 EXPOSE 8000
 EXPOSE 8001
 
-# WORKDIR /usr/src/server/src/tileserver
+WORKDIR /usr/src/server
 ENTRYPOINT ["/usr/src/server/docker-entrypoint.sh"]
-CMD ["-p", "8000"]
+CMD ["-p", "8000", "-c", "/usr/src/server/src/tileserver/config.json"]
