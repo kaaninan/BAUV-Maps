@@ -10,12 +10,11 @@
 **Step 1:** Get GitHub repository
 
 ```bash
-GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git # Skip LFS files
+git clone --depth 1 git@github.com:kaaninan/BAUV-Maps.git
 cd BAUV-Maps
-git lfs pull # Download maps
 ```
 
-**Step 2:** Copy maps (mbtiles) to ```src/tileserver/tilesets``` folder
+**Step 2:** Copy maps (mbtiles) to ```src/tileserver/tilesets``` folder. See: **Included Maps** section and ```src/tileserver/config.json```.
 
 **Step 3:** Build the docker image with the following command:
 
@@ -64,7 +63,7 @@ Create **Ubuntu 20.04** droplet, connect to the server with SSH and run the foll
 ```bash
 # Install Docker
 sudo apt update
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common git-lfs
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 sudo apt install -y docker-ce
