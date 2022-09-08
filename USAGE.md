@@ -35,7 +35,7 @@ This release includes prebuild docker image. It could be used without building t
 **Step 2:** Import the docker image with the following command:
 
 ```bash
-docker import /path/to/exampleimage.tgz
+docker load < /path/to/exampleimage.tgz
 ```
 
 ### Run Docker Container
