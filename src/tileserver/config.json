@@ -36,11 +36,59 @@
 		"turkey-osm": {
 			"mbtiles": "turkey-osm.mbtiles"
 		},
-		"TR402921": {
-			"mbtiles": "TR402921.mbtiles"
+		"G0511_1": {
+			"mbtiles": "G0511_1.mbtiles"
+		},
+		"G0511_2": {
+			"mbtiles": "G0511_2.mbtiles"
+		},
+		"G0511_3": {
+			"mbtiles": "G0511_3.mbtiles"
+		},
+		"G0511_4": {
+			"mbtiles": "G0511_4.mbtiles"
+		},
+		"G0511_5": {
+			"mbtiles": "G0511_5.mbtiles"
+		},
+		"G0511_6": {
+			"mbtiles": "G0511_6.mbtiles"
 		},
 		"G1111_1": {
 			"mbtiles": "G1111_1.mbtiles"
+		},
+		"G1111_2": {
+			"mbtiles": "G1111_2.mbtiles"
+		},
+		"G1111_3": {
+			"mbtiles": "G1111_3.mbtiles"
+		},
+		"G1113_1": {
+			"mbtiles": "G1113_1.mbtiles"
+		},
+		"G1113_2": {
+			"mbtiles": "G1113_2.mbtiles"
+		},
+		"TR400291": {
+			"mbtiles": "TR400291.mbtiles"
+		},
+		"TR402921": {
+			"mbtiles": "TR402921.mbtiles"
+		},
+		"TR402923": {
+			"mbtiles": "TR402923.mbtiles"
+		},
+		"TR502919": {
+			"mbtiles": "TR502919.mbtiles"
+		},
+		"TR502920": {
+			"mbtiles": "TR502920.mbtiles"
+		},
+		"TR52921A": {
+			"mbtiles": "TR52921A.mbtiles"
+		},
+		"TR52921B": {
+			"mbtiles": "TR52921B.mbtiles"
 		}
 	}
 }
