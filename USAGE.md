@@ -26,16 +26,14 @@ docker build -t mapserver .
 
 ### Use Prebuilt Docker Image (Option 2)
 
-See: [Releases](https://github.com/kaaninan/BAUV-Maps/releases)
+See: [Releases](https://hub.docker.com/r/kaaninan/bauv-maps)
 
 This release includes prebuild docker image. It could be used without building the docker image.
 
-**Step 1:** Download the release and extract it.
-
-**Step 2:** Import the docker image with the following command:
+**Step 1:** Import the docker image with the following command:
 
 ```bash
-docker load < /path/to/exampleimage.tgz
+docker pull kaaninan/bauv-maps
 ```
 
 ### Run Docker Container
@@ -43,7 +41,7 @@ docker load < /path/to/exampleimage.tgz
 Run the docker image with the following command:
 
 ```**bash**
-docker run -d -p 8000:8000 -p 8001:8001 --restart always mapserver --public_url http://SERVERIPADDRESS:8000
+docker run -d -p 8000:8000 -p 8001:8001 --restart always kaaninan/bauv-maps --public_url http://SERVERIPADDRESS:8000
 ```
 
 If you want to run the server on **localhost** ignore the ```--public_url``` option.
